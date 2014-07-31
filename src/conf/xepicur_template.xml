@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epicur xmlns="urn:nbn:de:1111-2004033116" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rosetta="http://www.exlibrisgroup.com/category/RosettaOverview"  xsi:schemaLocation="urn:nbn:de:1111-2004033116 http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:de:1111-2004033116">
+	<administrative_data>
+		<delivery>
+			<transfer type="oai"/>
+		</delivery>
+	</administrative_data>
+</epicur>

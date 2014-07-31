@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="xepicur" basedir=".">
+
+	<property file="build.properties" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="dps-sdk-4.0.1.jar, commons-io-2.2.jar, dom4j-1.6.1.jar, log4j-1.2.14.jar, jxl-2.6.9.jar, xmlbeans-2.3.0.jar, xepicur-xmlbeans.jar" />
+	</path>
+
+	<target name="clean">
+		<echo>Cleaning the ${build.dir}</echo>
+		<delete dir="${build.dir}" />
+		<delete dir="${target.dir}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<echo>Creating the build directory</echo>
+		<mkdir dir="${build.dir}/classes" />
+		<mkdir dir="${build.dir}/lib" />
+		<mkdir dir="${target.dir}" />
+	</target>
+
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="${lib.dir}/xmlbeans-2.3.0.jar" />
+
+	<xmlbean schema="${src.dir}/xmlbeans/xepicur.xsd" destfile="${lib.dir}/xepicur-xmlbeans.jar" classpath="${lib.dir}/xmlbeans-2.3.0.jar"/>
+
+	<target name="copy_jars">
+		<echo>Copy lib jars</echo>
+		<copy todir="${build.dir}/lib" overwrite="true">
+			<fileset dir="${lib.dir}" includes="xepicur-xmlbeans.jar"/>
+		</copy>
+	</target>
+
+	<target name="compile" depends="init">
+			<echo>Compile the source files</echo>
+			<javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="true" includeantruntime="false">
+				<classpath refid="classpath" />
+			</javac>
+	</target>
+
+
+
+	<target name="jar" depends="compile">
+		<jar destfile="${target.dir}/Xepicur-Converter.jar" basedir="${build.dir}/classes">
+			<fileset dir="${src.dir}" includes="**" excludes="xmlbeans/**, com/**"/>
+			<!--zipgroupfileset dir="${lib.dir}" includes="**/xepicur-xmlbeans.jar" /-->
+			<manifest>
+			    <attribute name="Main-Class" value="com.exlibris.dps.repository.plugin.registry.XEpicurConverterPlugin"/>
+			 </manifest>
+		 </jar>
+
+
+	</target>
+
+</project>
