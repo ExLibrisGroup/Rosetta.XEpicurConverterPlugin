@@ -43,6 +43,9 @@
 	<target name="jar" depends="compile">
 		<jar destfile="${target.dir}/Xepicur-Converter.jar" basedir="${build.dir}/classes">
 			<fileset dir="${src.dir}" includes="**" excludes="xmlbeans/**, com/**"/>
+			<!-- This line should remain commented to avoid conflicts with Rosetta.
+			     In case a new xmlbeans needs to be compiled (e.g. xsd has been changed), this should be coordinated with Ex Libris.
+			-->
 			<!--zipgroupfileset dir="${lib.dir}" includes="**/xepicur-xmlbeans.jar" /-->
 			<manifest>
 			    <attribute name="Main-Class" value="com.exlibris.dps.repository.plugin.registry.XEpicurConverterPlugin"/>
