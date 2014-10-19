@@ -3,7 +3,7 @@
   <mets:dmdSec ID="ie-dmd">
     <mets:mdWrap MDTYPE="DC">
       <mets:xmlData>
-        <dc:record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-0.xsd">
+        <dc:record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/">
           <dc:creator>Selenium</dc:creator>
           <dc:title>URN test</dc:title>
           <dc:description>Selenium Description</dc:description>
