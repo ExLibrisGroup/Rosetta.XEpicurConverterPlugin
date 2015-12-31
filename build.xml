@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
-<project name="xepicur" basedir=".">
+<project name="xepicur" basedir="." default="build-all">
 
 	<property file="build.properties" />
 
 	<path id="classpath">
 		<fileset dir="${lib.dir}" includes="dps-sdk-4.0.1.jar, commons-io-2.2.jar, dom4j-1.6.1.jar, log4j-1.2.14.jar, jxl-2.6.9.jar, xmlbeans-2.3.0.jar, xepicur-xmlbeans.jar" />
 	</path>
+
+	<target name="build-all" depends="init, copy_jars, compile, jar" />
 
 	<target name="clean">
 		<echo>Cleaning the ${build.dir}</echo>
@@ -41,6 +43,7 @@
 
 
 	<target name="jar" depends="compile">
+		<echo>Creating jar file</echo>
 		<jar destfile="${target.dir}/Xepicur-Converter.jar" basedir="${build.dir}/classes">
 			<fileset dir="${src.dir}" includes="**" excludes="xmlbeans/**, com/**"/>
 			<!-- This line should remain commented to avoid conflicts with Rosetta.
